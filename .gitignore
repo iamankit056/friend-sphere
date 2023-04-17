@@ -1,0 +1,12 @@
+# python stuff
+__pycache__
+
+# django stuff
+db.sqlite3
+
+# vscode stuff
+.vscode
+
+# environment stuff
+Pipfile
+Pipfile.lock
