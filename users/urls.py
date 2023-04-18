@@ -1,7 +1,7 @@
 from django.urls import path
-from chats import views
+from users import views
 
 urlpatterns = [
-    path('login', views.home, name='login_url'),
-    path('signup', views.home, name='signup_url'),
+    path('login', views.login, name='login_url'),
+    path('signup', views.signup, name='signup_url'),
 ]
