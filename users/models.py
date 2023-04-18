@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_pic = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    profile_pic = models.ImageField(default='profile_pics/default.jpg', upload_to='profile_pics')
     friends = models.ManyToManyField('Friend', related_name='my_friends', blank=True)
 
     def __str__(self):
