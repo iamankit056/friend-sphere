@@ -1,8 +1,5 @@
 from django.contrib import admin
-from users import models
+from users.models import Profile
 
 
-admin.site.register([
-    models.Profile,
-    models.Friend
-])
+admin.site.register(Profile)
