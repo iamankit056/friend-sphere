@@ -9,5 +9,6 @@ def signin(request):
     return render(request, 'users/login.html')
 
 
-
+def get_users(request):
+    pass
 
