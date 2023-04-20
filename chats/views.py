@@ -18,20 +18,17 @@ def home(request):
 
 
 @api_view(['GET'])
-def get_chats(request, reciver_id):
+def get_chats(request):
     if request.method == 'GET':
-        chats = ChatMessage.objects.filter(msg_sender=request.user.id, msg_reciver=reciver_id)
+        chats = ChatMessage.objects.filter(msg_sender=request.user.id, msg_reciver=request.data['receiver_id'])
         serialize_chats = ChatMessageSerialzer(chats, many=True)
         return Response(serialize_chats.data, status=status.HTTP_200_OK)
     return Response({'error': 'something went wrong, failed to fetch data!'}, status=status.HTTP_408_REQUEST_TIMEOUT)
 
 
 @api_view(['POST'])
-def save_chat(request, reciver_id):
+def save_chat(request):
     if request.method == 'POST':
-        request.data['msg_sender'] = request.user.id
-        request.data['msg_reciver'] = reciver_id
-        print(request.data)
         serialize_chat = ChatMessageSerialzer(data=request.data)
         if serialize_chat.is_valid():
             serialize_chat.save()
@@ -40,9 +37,9 @@ def save_chat(request, reciver_id):
 
 
 @api_view(['DELETE'])
-def delete_chat(request, chat_id):
+def delete_chat(request):
     try:
-        chat = ChatMessage.objects.get(pk=chat_id)
+        chat = ChatMessage.objects.get(pk=request.data['chat_id'])
         chat.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     except:
