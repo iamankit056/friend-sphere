@@ -8,5 +8,5 @@ class Profile(models.Model):
     bio = models.TextField(default='Hi there, I am using friend-share')
 
     def __str__(self):
-        return f'{self.user.first_name} {self.user.last_name}'
+        return self.user.username
     

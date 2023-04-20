@@ -5,4 +5,4 @@ from chats.models import ChatMessage
 class ChatMessageSerialzer(serializers.ModelSerializer):
     class Meta:
         model = ChatMessage
-        fields = ['id', 'text', 'msg_sender', 'msg_reciver', 'is_read']
+        fields = ['id', 'text', 'msg_sender', 'msg_receiver', 'is_read']

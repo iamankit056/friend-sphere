@@ -1,11 +1,17 @@
-function load_chats(reciver_id) 
+function load_chats(receiver_id) 
 {
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:9000/user/' + reciver_id + '/chats',
+        url: 'http://localhost:9000/user/chats',
+        contentType: 'application/json',
+        data: {
+            'receiver_id': receiver_id
+        },
+        dataType: 'json',
         success: function(chats, status) {
-            console.table(chats)
-            console.table(status)
+            if(status == 'success') {
+                console.table(chats)
+            }
         }
     })
 }

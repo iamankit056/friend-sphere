@@ -18,17 +18,19 @@ def home(request):
 
 
 @api_view(['GET'])
-def get_chats(request):
+def get_chats(request, receiver_id):
     if request.method == 'GET':
-        chats = ChatMessage.objects.filter(msg_sender=request.user.id, msg_reciver=request.data['receiver_id'])
+        chats = ChatMessage.objects.filter(msg_sender=request.user.id, msg_receiver=receiver_id)
         serialize_chats = ChatMessageSerialzer(chats, many=True)
         return Response(serialize_chats.data, status=status.HTTP_200_OK)
     return Response({'error': 'something went wrong, failed to fetch data!'}, status=status.HTTP_408_REQUEST_TIMEOUT)
 
 
 @api_view(['POST'])
-def save_chat(request):
+def save_chat(request, receiver_id):
     if request.method == 'POST':
+        request.data['msg_sender'] = request.user.id
+        request.data['msg_receiver'] = receiver_id
         serialize_chat = ChatMessageSerialzer(data=request.data)
         if serialize_chat.is_valid():
             serialize_chat.save()
