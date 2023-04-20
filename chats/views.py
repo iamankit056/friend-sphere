@@ -1,17 +1,49 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from users.models import Profile
+from chats.models import ChatMessage
+from chats.serializers import ChatMessageSerialzer
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 # Create your views here.
 def home(request):
     users = User.objects.all()
-    profiles = User.objects.all()
 
     context = {
-        'users': users,
-        'profiles': profiles
+        'users': users
     }
 
     return render(request, 'chats/home.html', context)
 
 
+@api_view(['GET'])
+def get_chats(request, reciver_id):
+    if request.method == 'GET':
+        chats = ChatMessage.objects.filter(msg_sender=request.user.id, msg_reciver=reciver_id)
+        serialize_chats = ChatMessageSerialzer(chats, many=True)
+        return Response(serialize_chats.data, status=status.HTTP_200_OK)
+    return Response({'error': 'something went wrong, failed to fetch data!'}, status=status.HTTP_408_REQUEST_TIMEOUT)
+
+
+@api_view(['POST'])
+def save_chat(request, reciver_id):
+    if request.method == 'POST':
+        request.data['msg_sender'] = request.user.id
+        request.data['msg_reciver'] = reciver_id
+        print(request.data)
+        serialize_chat = ChatMessageSerialzer(data=request.data)
+        if serialize_chat.is_valid():
+            serialize_chat.save()
+            return Response(status=status.HTTP_201_CREATED)
+    return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['DELETE'])
+def delete_chat(request, chat_id):
+    try:
+        chat = ChatMessage.objects.get(pk=chat_id)
+        chat.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
