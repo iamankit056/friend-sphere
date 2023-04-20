@@ -39,9 +39,9 @@ def save_chat(request, receiver_id):
 
 
 @api_view(['DELETE'])
-def delete_chat(request):
+def delete_chat(request, chat_id):
     try:
-        chat = ChatMessage.objects.get(pk=request.data['chat_id'])
+        chat = ChatMessage.objects.get(pk=chat_id)
         chat.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     except:

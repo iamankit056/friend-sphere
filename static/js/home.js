@@ -1,19 +1,27 @@
-function load_chats(receiver_id) 
+function LoadChats(receiver_id) 
 {
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:9000/user/chats',
-        contentType: 'application/json',
-        data: {
-            'receiver_id': receiver_id
-        },
-        dataType: 'json',
+        url: 'http://localhost:9000/receiver/'+ receiver_id + '/chats',
         success: function(chats, status) {
             if(status == 'success') {
-                console.table(chats)
+                chats.forEach(chat => {
+                    $('#my_chats').append(ChatRowHtml(chat))
+                });
             }
         }
     })
 }
 
-load_chats(9)
+function ChatRowHtml(chat) {
+    return ('<tr>' + 
+        '<td>' + chat.id + '</td>' +
+        '<td>' + chat.text + '</td>' +
+        '<td>' + chat.file + '</td>' +
+        '<td>' + chat.msg_sender + '</td>' +
+        '<td>' + chat.msg_receiver + '</td>' +
+        '<td>' + chat.is_read + '</td>' +
+    '</tr>')
+}
+
+LoadChats(2)
