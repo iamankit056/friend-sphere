@@ -108,13 +108,15 @@ section {
 }
 
 .chats-action-control {
+    position: fixed;
     padding: 10px 20px;
-    width: 100%;
+    width: 65.5%;
     display: flex;
     margin-bottom:5px;
     flex-direction: row;
     align-items: center;
-    border-radius: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     justify-content: space-between;
     background-color: #ae00ff;
 }
@@ -226,19 +228,6 @@ section {
 
 input:focus {
     outline: none;
-}
-
-.friend:hover {
-    background-color: rgba(255, 255, 255, 0.551);
-}
-
-.friends-list .searchbar button:hover {
-    background-color: rgb(232, 227, 227);
-}
-
-
-.add-friend:hover .drop-down-friend {
-    display: block;
 }
 
 .room:hover .drop-down-room {
