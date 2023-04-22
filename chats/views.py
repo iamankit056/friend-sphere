@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.contrib.auth.models import User
 from chats.models import ChatMessage
+from users.models import Profile
 from chats.serializers import ChatMessageSerialzer
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -8,10 +8,10 @@ from rest_framework.response import Response
 
 # Create your views here.
 def home(request):
-    users = User.objects.all()
+    users_profile = Profile.objects.all()
 
     context = {
-        'users': users
+        'users_profile': users_profile
     }
 
     return render(request, 'chats/home.html', context)

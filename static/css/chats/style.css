@@ -1,0 +1,357 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    color: #fff;
+    font-family: sans-serif;
+}
+
+header {
+    width: 100%;
+    height: 100px;
+}
+
+#my-nav {
+    padding: 0px 5%;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center ;
+    justify-content: space-between;
+    background-color: #ae00ff;
+}
+
+.menu {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.add-friend,
+.room {
+    width: 30%;
+    height: 100vh;
+}
+
+.user-profile {
+    width: 20%;
+    height: 100vh;
+    align-items: center;
+}
+
+.nav-button {
+    background-color: rgb(174, 0, 255);
+    width: 60%;
+    margin-top: 25px;
+    padding: 10px;
+    text-align: center;
+    margin-left: 20px;
+    border-radius: 25px;
+}
+
+.uprofile {
+    width: 100%;
+    height: 10vh;
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+.user-profile img {
+    width: 75%;
+    border: 3px dotted rgb(174, 0, 255);
+    border-radius: 50%;
+}
+
+.drop-down-friend {
+    position: absolute;
+    display: none;
+    background-color: rgb(174, 0, 255);
+    width: 10%;
+    height: 10vh;
+    right: 380px;
+    margin-top: 11px;
+    border-radius: 10px;
+}
+
+.drop-down-room {
+    position: absolute;
+    display: none;
+    background-color: rgb(174, 0, 255);
+    width: 10%;
+    height: 10vh;
+    margin-top: 11px;
+    right: 180px;
+    border-radius: 10px;
+}
+
+.drop-down-profile {
+    display: none;
+    position: absolute;
+    background-color: rgb(174, 0, 255);
+    width: 15%;
+    height: 30vh;
+    /* margin-top: 11px; */
+    right: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.friends-list {
+    width: 35%;
+    /* height: 50%; */
+    background-color: rgb(174, 0, 255);
+    overflow-y: hidden;
+    display: inline-block;
+    margin: 4px;
+    border-radius: 8px;
+}
+
+.friends-list .searchbar {
+    position: relative;
+    width: 80%;
+    height: 7vh;
+    top: 40px;
+    left: 45px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.455);
+    border-radius: 25px;
+    display: flex;
+
+}
+
+.friends-list .searchbar input[type="text"] {
+    width: 80%;
+    height: 100%;
+    font-size: 22px;
+    font-weight: 500;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    margin-left: 5px;
+    padding: 2px;
+}
+
+.friends-list .searchbar button {
+    width: 20%;
+}
+
+.friend {
+    width: 80%;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 75px;
+    border-radius: 35px;
+    left: 45px;
+    background-color: rgba(255, 255, 255, 0.242);
+    margin-top: 20px;
+}
+
+.friend-pic {
+    width: 18%;
+    height: 10vh;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.friend-pic img {
+    width: 100%;
+    height: 100%;
+
+}
+
+.about-friend {
+    width: 70%;
+    height: 100%;
+    margin: 10px
+}
+
+.about-friend h3 {
+    color: rgb(250, 76, 198);
+    font-size: 24px;
+}
+
+.chat-friend {
+    width: 65%;
+    height: 10vh;
+    background-color: rgb(174, 0, 255);
+    border-left: solid 1px rgb(175, 175, 175);
+    margin: 4px 4px 4px 0;
+    border-radius: 8px;
+}
+
+.chat-area {
+    width: 64.26%;
+    height: 100%;
+}
+
+.chat-profile {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    height: 10vh;
+    background-color: rgb(174, 0, 255);
+    margin: 4px 4px 4px 0;
+    border-radius: 10px;
+}
+
+.chat-pic {
+    width: 7%;
+    height: 90%;
+    margin: 3px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+}
+
+.chat-pic img {
+    width: 100%;
+    height: 100%;
+}
+
+.chat-name {
+    width: 20%;
+    height: 100%;
+    padding: 15px;
+    color: rgb(250, 76, 198);
+    font-size: 24px;
+}
+
+.message-area {
+    width: 100%;
+    height: 50%;
+    background-color: rgb(218, 215, 215);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.reciver {
+    width: 20%;
+    height: 5vh;
+    padding: 13px;
+    background-color: rgb(174, 0, 255);
+    margin: 24px;
+    align-self: flex-start;
+    border-radius: 25px;
+}
+
+.sender {
+    align-self: end;
+    width: 20%;
+    height: 5vh;
+    padding: 13px;
+    background-color: rgb(250, 76, 198);
+    margin: 24px;
+    border-radius: 25px;
+}
+
+.sending-area {
+    width: 60%;
+    height: 10vh;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    top: 60vh;
+    left: 559px;
+    background-color: rgb(174, 0, 255);
+    margin: 4px 4px 4px 0;
+    border-radius: 10px;
+}
+
+.emoji {
+    width: 10%;
+    height: 100%;
+}
+
+.emoji button {
+    width: 100%;
+    padding: 12px;
+    font-size: 45px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgba(255, 253, 253, 0.592);
+}
+
+.add-files {
+    width: 10%;
+    height: 100%;
+}
+
+.add-files button {
+    width: 100%;
+    padding: 12px;
+    font-size: 45px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgba(255, 253, 253, 0.592);
+}
+
+.message {
+    width: 70%;
+    height: 80%;
+    margin-top:7px;
+    display: flex;
+
+    background-color:rgb(255, 254, 254);
+    margin-left:45px;
+    border-radius: 25px;
+}
+.message input{
+    width: 90%;
+    height: 100%;
+    margin-left:5px ;
+    font-size: 22px;
+}
+.message button{
+    width: 8%;
+    padding:12px;
+    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+input:focus {
+    outline: none;
+}
+
+.friend:hover {
+    background-color: rgba(255, 255, 255, 0.551);
+}
+
+.friends-list .searchbar button:hover {
+    background-color: rgb(232, 227, 227);
+}
+
+
+.add-friend:hover .drop-down-friend {
+    display: block;
+}
+
+.room:hover .drop-down-room {
+    display: block;
+}
+
+.user-profile:hover .drop-down-profile {
+    display: block;
+}

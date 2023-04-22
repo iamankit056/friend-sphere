@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}{% endblock head %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav id="my-nav">
+        <a href="">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" id="my-logo">
+        </a>
+        <h1 id="page-title">{{ page_title }}</h1>
+        <a href="">
+            <img src="{{ user.profile.profile_pic.url }}" class="profile-picture">
+        </a>
+    </nav>
+
+    {% block content %}{% endblock content %}
+</body>
+</html>
