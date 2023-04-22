@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block head %}
-    <title>{{user.username}}</title>
+    {% comment %} <title>{{user.username}}</title> {% endcomment %}
+    <title>Friends -Sphere</title>
     <link rel="stylesheet" href="{% static 'css/chats/home.css' %}">
     <!-- font-awesome 4.7.0 cd link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,7 +19,7 @@
                 <button><i class="fa fa-search" style="font-size: 18px;">
                     </i></button>
             </div>
-            {% for user_profile in users_profile %}
+            {% comment %} {% for user_profile in users_profile %} {% endcomment %}
                 <div class="user">
                     <div class="user-pic">
                         <img src="{{ user_profile.profile_pic.url }}" class="profile-picture">
@@ -28,13 +29,13 @@
                         <p>{{ user_profile.bio }}</p>
                     </div>
                 </div>                
-            {% endfor %}
+            {% comment %} {% endfor %} {% endcomment %}
         </div>
         <div id="chats">
             <div class="chats-action-control">
                 <a href="" >
-                    <img src="{{user.profile.profile_pic.url}}" class="profile-picture"> 
-                    <small>{{user.username}}</small>
+                    {% comment %} <img src="{{user.profile.profile_pic.url}}" class="profile-picture">  {% endcomment %}
+                    {% comment %} <small>{{user.username}}</small> {% endcomment %}
                 </a>
                 <div class="actions">
                     <small>Delete</small>
@@ -67,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div id="chat-sender">
+        <form action="" id="chat-sender" method="POST">
             <div class="sending-area">
                 <div class="emoji">
                     <button>
@@ -83,8 +84,8 @@
                     <input type="text" name="" id="" placeholder="Message">
                     <button><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                 </div>
-            </div>
         </div>
+        </form>
     </section>
 
     <!-- my script -->

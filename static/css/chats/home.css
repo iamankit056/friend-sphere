@@ -22,7 +22,7 @@ section {
 #chats {
     width: 66%;
     height: calc(82% - 100px);
-    background-color: orangered;
+    border-radius: 8px;
 }
 
 #chat-sender {
@@ -39,29 +39,35 @@ section {
 .searchbar {
     position: relative;
     width: 80%;
-    height: 7vh;
+    height: 7vh;    
     top: 40px;
     left: 45px;
     background-color: rgb(255, 255, 255);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.455);
     border-radius: 25px;
-    display: flex;
-
+    display:flex;
 }
 
 .searchbar input[type="text"] {
     width: 80%;
     height: 100%;
     font-size: 22px;
+    margin-left: 5px;
     font-weight: 500;
+    border: solid 2px white;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
-    margin-left: 5px;
     padding: 2px;
+    outline: none;
 }
 
 .searchbar button {
     width: 20%;
+    height:100%;
+    border-top-right-radius: 25px;
+    background-color: white;
+    border: solid white;
+    border-bottom-right-radius: 25px;
 }
 
 .user {
@@ -87,6 +93,7 @@ section {
 .user-pic img {
     width: 100%;
     height: 100%;
+    border-radius: 50%;
 }
 
 .about-user {
@@ -104,8 +111,10 @@ section {
     padding: 10px 20px;
     width: 100%;
     display: flex;
+    margin-bottom:5px;
     flex-direction: row;
     align-items: center;
+    border-radius: 8px;
     justify-content: space-between;
     background-color: #ae00ff;
 }
@@ -117,11 +126,12 @@ section {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    border-radius: 8px;
 }
 
 .reciver {
     width: 20%;
-    height: 5vh;
+    height: 6vh;
     padding: 13px;
     background-color: rgb(174, 0, 255);
     margin: 24px;
@@ -132,7 +142,7 @@ section {
 .sender {
     align-self: end;
     width: 20%;
-    height: 5vh;
+    height: 6vh;
     padding: 13px;
     background-color: rgb(250, 76, 198);
     margin: 24px;
@@ -142,13 +152,11 @@ section {
 /* stop */
 
 .sending-area {
-    width: 60%;
+    width: 100%;
     height: 10vh;
     position: relative;
     display: flex;
     flex-direction: row;
-    top: 60vh;
-    left: 559px;
     background-color: rgb(174, 0, 255);
     margin: 4px 4px 4px 0;
     border-radius: 10px;
@@ -157,13 +165,16 @@ section {
 .emoji {
     width: 10%;
     height: 100%;
+    margin: 13px;
 }
 
 .emoji button {
-    width: 100%;
+    width: 85%;
     padding: 12px;
     font-size: 45px;
     text-align: center;
+    border: 0;
+    border-radius: 50%;
     color: rgb(255, 255, 255);
     background-color: rgba(255, 253, 253, 0.592);
 }
@@ -171,13 +182,16 @@ section {
 .add-files {
     width: 10%;
     height: 100%;
+    margin: 13px;
 }
 
 .add-files button {
-    width: 100%;
+    width: 85%;
     padding: 12px;
+    border:0;
     font-size: 45px;
     text-align: center;
+    border-radius: 50%;
     color: rgb(255, 255, 255);
     background-color: rgba(255, 253, 253, 0.592);
 }
@@ -185,9 +199,8 @@ section {
 .message {
     width: 70%;
     height: 80%;
-    margin-top:7px;
+    margin:13px;
     display: flex;
-
     background-color:rgb(255, 254, 254);
     margin-left:45px;
     border-radius: 25px;
@@ -195,14 +208,19 @@ section {
 
 .message input{
     width: 90%;
+    margin-left: 5px;
     height: 100%;
-    margin-left:5px ;
+    border-radius: 25px;
+    border:0;
     font-size: 22px;
 }
 .message button{
-    width: 8%;
+    width: 10%;
     padding:12px;
     font-size: 20px;
+    border: 0;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
     background-color: rgb(255, 255, 255);
 }
 
@@ -229,4 +247,25 @@ input:focus {
 
 .user-profile:hover .drop-down-profile {
     display: block;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f100;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #88888800;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555555a3;
 }
