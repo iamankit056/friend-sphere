@@ -2,11 +2,16 @@ function LoadChats(receiver_id)
 {
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:9000/receiver/'+ receiver_id + '/chats',
+        url: 'http://localhost:9000/receiver/' + receiver_id + '/chats',
         success: function(chats, status) {
             if(status == 'success') {
-                chats.forEach(chat => {
-                    $('#my_chats').append(ChatRowHtml(chat))
+                // load sender chats
+                chats.sender.forEach(chat => {
+                    $('#sender_chats').append(ChatRowHtml(chat))
+                });
+                // load reveiver chats
+                chats.reciver.forEach(chat => {
+                    $('#receiver_chats').append(ChatRowHtml(chat))
                 });
             }
         }

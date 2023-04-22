@@ -1,0 +1,11 @@
+{% extends 'errors/base.html' %}
+{% block head %}
+    <title>404 Not Found</title>
+{% endblock head %}
+
+{% block content %}
+    <h1 class="fs-1 mt-5 mb-1 text-danger">404 Not Found</h1>
+    {% for message in messages %}
+        <p class="list-group-item fs-5 text-{{message.tags}}">{{message}}</p>
+    {% endfor %}
+{% endblock content %}

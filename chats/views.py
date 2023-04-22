@@ -9,20 +9,24 @@ from rest_framework.response import Response
 # Create your views here.
 def home(request):
     users_profile = Profile.objects.all()
-
     context = {
         'users_profile': users_profile
     }
-
     return render(request, 'chats/home.html', context)
 
 
 @api_view(['GET'])
 def get_chats(request, receiver_id):
     if request.method == 'GET':
-        chats = ChatMessage.objects.filter(msg_sender=request.user.id, msg_receiver=receiver_id)
-        serialize_chats = ChatMessageSerialzer(chats, many=True)
-        return Response(serialize_chats.data, status=status.HTTP_200_OK)
+        sender_chats = ChatMessage.objects.filter(msg_sender=request.user.id, msg_receiver=receiver_id)
+        reciver_chats = ChatMessage.objects.filter(msg_sender=receiver_id, msg_receiver=request.user.id)
+        serialize_sender_chats = ChatMessageSerialzer(sender_chats, many=True)
+        serialize_reciver_chats = ChatMessageSerialzer(reciver_chats, many=True)
+        json_data = {
+            'sender_messages': serialize_sender_chats.data,
+            'serialize_reciver_chats': serialize_reciver_chats.data
+        }
+        return Response(json_data, status=status.HTTP_200_OK)
     return Response({'error': 'something went wrong, failed to fetch data!'}, status=status.HTTP_408_REQUEST_TIMEOUT)
 
 

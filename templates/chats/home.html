@@ -1,16 +1,28 @@
-{% extends 'base.html' %}
 {% load static %}
-
-{% block head %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{user.username}}</title>
     <link rel="stylesheet" href="{% static 'css/chats/home.css' %}">
     <!-- font-awesome 4.7.0 cd link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- jquery 3.6.4 cdn link -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-{% endblock head %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
 
-{% block content %}
+<body>
+    <nav id="my-nav">
+        <a href="">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" id="my-logo">
+        </a>
+        <a href="">
+            <img src="{{ user.profile.profile_pic.url }}" class="profile-picture">
+        </a>
+    </nav>
     <section>
         <div id="users">
             <div class="searchbar">
@@ -83,4 +95,5 @@
 
     <!-- my script -->
     <script src="{% static 'js/chats/home.js' %}"></script>
-{% endblock content %}
+</body>
+</html>
