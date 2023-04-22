@@ -165,7 +165,7 @@ section {
 .emoji {
     width: 10%;
     height: 100%;
-    margin: 13px;
+    margin: 25px;
 }
 
 .emoji button {
@@ -182,7 +182,7 @@ section {
 .add-files {
     width: 10%;
     height: 100%;
-    margin: 13px;
+    margin: 25px;
 }
 
 .add-files button {
@@ -199,7 +199,7 @@ section {
 .message {
     width: 70%;
     height: 80%;
-    margin:13px;
+    margin:25px;
     display: flex;
     background-color:rgb(255, 254, 254);
     margin-left:45px;
