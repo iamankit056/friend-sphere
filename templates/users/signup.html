@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>~ signup ~</title>
+    <link rel="stylesheet" href="{% static 'css/staticsinsup.css' %}">
+    
+</head>
+<body>
+  <form action="/signup" method="POST">
+    {% csrf_token %}
+    <div class="content">
+      <div class="container">
+          <img class="bg-img" src="{% static 'image/bg.jpg' %}" alt="" />
+          <div class="menu">
+        <div class="enregistrer active-section">
+          <div class="contact-form">
+            <label>USERNAME</label>
+            <input placeholder="" type="text" name="username" required />
+
+            <label>E-MAIL</label>
+            <input placeholder="" type="text" name="email" required />
+
+            <label>PASSWORD</label>
+            <input placeholder="" type="text" name="passw1" required />
+
+            <label>CONFIRM PASSWORD</label>
+            <input placeholder="" type="text" name="passw2" required />
+
+            <br>
+
+            <input class="submit" value="SIGN UP" type="submit" />
+          </div>
+      </div>
+    </div>
+  </form>
+</body>
+</html>
