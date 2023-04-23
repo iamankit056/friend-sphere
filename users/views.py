@@ -2,12 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from rest_framework import status
+from users.models import Profile
 from users.forms import ProfileUpdationForm, UserUpdationForm
-<<<<<<< HEAD
 from django.contrib.auth.decorators import login_required
-=======
-from django.contrib.auth import authenticate,login, logout
->>>>>>> 7082d445e37283adba5b7c1b840bcf130de6fc78
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 def signup(request):
@@ -16,55 +14,47 @@ def signup(request):
         email = request.POST["email"]
         password1 = request.POST["passw1"]
         confirmpassword = request.POST["passw2"]
-        if(password1 != confirmpassword):
-            messages.warning(request, "Passwords is incorrect")
-            return redirect('/signup')
+
         try:
-            if user.objects.get(username=username):
-                messages.info(request, "username is taken")
-                return redirect('/signup')
+            user = User.objects.get(username=username)
+            messages.error(request, f'{username} already taken')
+            return redirect('signup_url')
         except:
             pass
 
-        try:
-            if user.objects.get(email=email):
-                messages.info(request, "email is taken")
-                return redirect('/signup')
+        if(password1 != confirmpassword):
+            messages.warning(request, "Passwords does not match")
+            return redirect('signup_url')
 
-        except:
-            pass 
-        user = User.objects.create_user(
-            username=username, password=password1, email=email )
+        user = User.objects.create_user(username=username, password=password1, email=email)
         user.save()
-    
+        profile = Profile(user=user)
+        profile.save()
         messages.success(request, f"Account created successfull for {username}")
-        return redirect( "/signin")
+        return redirect( 'signin_url')
     return render(request, 'users/signup.html')
 
 
 def signin(request):
-<<<<<<< HEAD
-    return render(request, 'users/signin.html')
-=======
-     if request.method == "POST":
+    if request.method == "POST":
         uname=request.POST.get('username')
         password=request.POST.get('password')
         myuser=authenticate(username=uname,password=password)
         if myuser is not None:
             login(request,myuser) 
             messages.success(request,"signin successful")
-            return redirect("/")
+            return redirect('home_url')
         else:
             messages.error(request,"login failed")
-            return redirect("/signin")
-
+            return redirect("signin_url")
     return render(request, 'users/signin.html')
 
-def logout(request):
+
+@login_required(login_url='signin_url')
+def signout(request):
     logout(request)
     messages.info(request,"signout successful")
-    return redirect("/")
->>>>>>> 7082d445e37283adba5b7c1b840bcf130de6fc78
+    return redirect('signin_url')
 
 
 @login_required(login_url='signin_url')

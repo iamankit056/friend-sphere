@@ -9,12 +9,11 @@
     <link rel="stylesheet" href="{% static 'css/users/staticsinsup.css' %}" />
 </head>
 <body>
-    <form action="/signin" method="POST">
+    <form action="" method="POST">
       {% csrf_token %}
       <div class="content">
         <div class="container">
           <img class="bg-img" src="{% static 'images/bg.jpg' %}" />
-      
           <div class="connexion">
             <div class="contact-form">
               <label>USERNAME</label>
@@ -25,8 +24,8 @@
               <input class="submit" value="SIGN IN" type="submit" />
             </div>
 
-            <a href="" target="_blank"><h4>Forgot password?</h4></a>
-            <a href="signup" target="_blank"><h4> SIGNUP</h4></a>
+            <a href=""><h4>Forgot password?</h4></a>
+            <a href="{% url 'signup_url' %}"><h4> SIGNUP</h4></a>
           </div>
         </div>
       </div>
