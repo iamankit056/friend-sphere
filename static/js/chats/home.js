@@ -1,3 +1,15 @@
+let active_user
+const time_for_makeing_chat_request = 2000
+
+function ActivateChattingForReceiver(receiver_id) {
+    if (!active_user)
+        clearInterval(active_user)
+
+    active_user = setInterval(() => {
+        LoadChats(receiver_id)
+    }, time_for_makeing_chat_request)
+}
+
 function LoadChats(receiver_id) 
 {
     $.ajax({
@@ -28,5 +40,3 @@ function ChatRowHtml(chat) {
         '<td>' + chat.is_read + '</td>' +
     '</tr>')
 }
-
-LoadChats(2)

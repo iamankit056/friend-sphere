@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from rest_framework import status
 from users.forms import ProfileUpdationForm, UserUpdationForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def signup(request):
@@ -10,9 +11,10 @@ def signup(request):
 
 
 def signin(request):
-    return render(request, 'users/login.html')
+    return render(request, 'users/signin.html')
 
 
+@login_required(login_url='signin_url')
 def user_profile(request, username):
     try:
         user = User.objects.get(username=username)
@@ -28,6 +30,7 @@ def user_profile(request, username):
     return render(request, 'users/profile.html', context)   
 
 
+@login_required()
 def update_profile(request):
     if request.method == 'POST':
         user_updation_form = UserUpdationForm(request.POST, instance=request.user)
