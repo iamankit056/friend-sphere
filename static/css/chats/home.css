@@ -1,9 +1,53 @@
+.logo a {
+    text-decoration-color: rgb(250, 76, 198);
+}
+
+.logo a p {
+    font-family: 'Marck Script', cursive;
+    font-size: 40px;
+    color: rgb(255, 254, 254)
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+}
+
+.menu .profile-picture {
+    border: 6px dashed #ff09c6;
+    margin-right: 0
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border:3px solid rgb(255, 255, 255)
+}
+
+.menu button {
+    width: 100%;
+    margin-top: 0px;
+    margin-left: 50px;
+    font-size: 48px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
+    color: rgb(255, 254, 254);
+}
+
+.logout {
+    background-color: red;
+    width: 10%;
+    height: 100%;
+}
+
 section {
     width: 100%;
     height: 100%;
 }
 
-#users, #chats {
+#users,
+#chats {
     margin: 0.5%;
     float: left;
     border-radius: 8px;
@@ -39,13 +83,13 @@ section {
 .searchbar {
     position: relative;
     width: 80%;
-    height: 7vh;    
+    height: 7vh;
     top: 40px;
     left: 45px;
     background-color: rgb(255, 255, 255);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.455);
     border-radius: 25px;
-    display:flex;
+    display: flex;
 }
 
 .searchbar input[type="text"] {
@@ -63,7 +107,7 @@ section {
 
 .searchbar button {
     width: 20%;
-    height:100%;
+    height: 100%;
     border-top-right-radius: 25px;
     background-color: white;
     border: solid white;
@@ -79,7 +123,7 @@ section {
     top: 75px;
     border-radius: 35px;
     left: 45px;
-    background-color: rgba(255, 255, 255, 0.242);
+    background-color: rgba(255, 255, 255, 0.423);
     margin-top: 20px;
 }
 
@@ -108,47 +152,83 @@ section {
 }
 
 .chats-action-control {
-    position: fixed;
+    position: absolute;
     padding: 10px 20px;
+    height: 11vh;
     width: 65.5%;
     display: flex;
-    margin-bottom:5px;
+    z-index: 1;
+    margin-bottom: 5px;
     flex-direction: row;
     align-items: center;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    justify-content: space-between;
+    justify-content: flex-start;
     background-color: #ae00ff;
+}
+
+.chats-action-control p{
+    color: rgb(250, 76, 198);
+    font-size: 32px;
+    margin:20px
 }
 
 .messages {
     width: 100%;
-    height: auto;
+    min-height: 59vh;
+    max-height: auto;
+    position: relative;
+    top: 82px;
     background-color: rgb(218, 215, 215);
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     border-radius: 8px;
+    font-size: 21px;
+}
+
+.messages pre {
+    font-family: sans-serif;
 }
 
 .reciver {
-    width: 20%;
-    height: 6vh;
+    width: auto;
     padding: 13px;
-    background-color: rgb(174, 0, 255);
     margin: 24px;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
     align-self: flex-start;
     border-radius: 25px;
+    background-color: #ae00ff;
+}
+
+.reciver button {
+    margin: auto 10px;
+    background-color: rgb(255, 255, 255, 0);
+    border: 0;
+    font-size: 23px;
+    color: rgb(255, 255, 255);
 }
 
 .sender {
     align-self: end;
-    width: 20%;
-    height: 6vh;
+    text-align: right;
+    width: auto;
+    display: flex;
+    flex-direction: row;
     padding: 13px;
     background-color: rgb(250, 76, 198);
     margin: 24px;
     border-radius: 25px;
+}
+
+.sender button {
+    margin: auto 10px;
+    background-color: rgb(255, 255, 255, 0);
+    border: 0;
+    font-size: 23px;
+    color: rgb(255, 255, 255)
 }
 
 /* stop */
@@ -190,7 +270,7 @@ section {
 .add-files button {
     width: 85%;
     padding: 12px;
-    border:0;
+    border: 0;
     font-size: 45px;
     text-align: center;
     border-radius: 50%;
@@ -201,24 +281,34 @@ section {
 .message {
     width: 70%;
     height: 80%;
-    margin:25px;
+    margin: 25px;
     display: flex;
-    background-color:rgb(255, 254, 254);
-    margin-left:45px;
+    background-color: rgb(255, 254, 254);
+    margin-left: 45px;
     border-radius: 25px;
 }
 
-.message input{
+.message input {
     width: 90%;
-    margin-left: 5px;
+    margin-left: 10px;
     height: 100%;
     border-radius: 25px;
-    border:0;
+    border: 0;
     font-size: 22px;
 }
-.message button{
+
+.message label {
     width: 10%;
-    padding:12px;
+    padding: 12px;
+    font-size: 38px;
+    border: 0;
+    color: rgb(0 0 0);
+    background-color: rgb(255, 255, 255);
+}
+
+.message button {
+    width: 10%;
+    padding: 12px;
     font-size: 20px;
     border: 0;
     border-top-right-radius: 25px;
@@ -230,6 +320,24 @@ input:focus {
     outline: none;
 }
 
+.user:active{
+    background-color: rgb(250, 76, 198);
+}
+
+#my-nav a:hover {
+    color: rgb(179, 175, 175);
+    text-decoration-color: rgba(234, 74, 74, 0.823);
+}
+
+.profile-picture:hover {
+    border-color: rgba(255, 255, 255, 0.51);
+}
+
+
+.menu button:hover {
+    color: rgb(218, 215, 215)
+}
+
 .room:hover .drop-down-room {
     display: block;
 }
@@ -237,6 +345,15 @@ input:focus {
 .user-profile:hover .drop-down-profile {
     display: block;
 }
+
+.reciver button:hover {
+    color: rgb(250, 76, 198);
+}
+
+.sender button:hover {
+    color: rgb(174, 0, 255)
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 8px;
