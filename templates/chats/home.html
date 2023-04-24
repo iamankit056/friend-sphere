@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{user.username}}</title>
+    <title>Welcome {{user.username}}</title>
     <link rel="stylesheet" href="{% static 'css/chats/home.css' %}">
     <!-- font-awesome 4.7.0 cd link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -13,7 +13,6 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-
 <body>
     <nav id="my-nav">
         <a href="">
@@ -27,57 +26,30 @@
         <div id="users">
             <div class="searchbar">
                 <input type="text" name="" id="" placeholder="Search">
-                <button><i class="fa fa-search" style="font-size: 18px;">
-                    </i></button>
+                <button><i class="fa fa-search" style="font-size: 18px;"></i></button>
             </div>
-            {% for user_profile in users_profile %}
-                <div class="user">
+            {% for u in users %}
+                <div class="user" onclick="ActivateChattingForReceiver({{u.profile.pk}})">
                     <div class="user-pic">
-                        <img src="{{ user_profile.profile_pic.url }}" class="profile-picture">
+                        <a href="{% url 'user_profile_url' u.username %}">
+                            <img src="{{ u.profile.profile_pic.url }}" class="profile-picture">
+                        </a>
                     </div>
                     <div class="about-user">
-                        <h3>{{ user_profile.user.username }}</h3>
-                        <p>{{ user_profile.bio }}</p>
+                        <h3>{{ u.profile.user.username }}</h3>
+                        <p>{{ u.profile.bio }}</p>
                     </div>
                 </div>                
             {% endfor %}
         </div>
         <div id="chats">
             <div class="chats-action-control">
-                <a href="" >
-                    <img src="{{user.profile.profile_pic.url}}" class="profile-picture"> 
-                    <small>{{user.username}}</small>
-                </a>
                 <div class="actions">
                     <small>Delete</small>
                 </div>
             </div>
-            <div class="messages">
-                <div class="reciver">
-                    <p>Hi, How are you?</p>
-                </div>
-                <div class="sender">
-                    <p>Fine, What About you?</p>
-                </div>
-                <div class="reciver">
-                    <p>Hi, How are you?</p>
-                </div>
-                <div class="sender">
-                    <p>Fine, What About you?</p>
-                </div>
-                <div class="reciver">
-                    <p>Hi, How are you?</p>
-                </div>
-                <div class="sender">
-                    <p>Fine, What About you?</p>
-                </div>
-                <div class="reciver">
-                    <p>Hi, How are you?</p>
-                </div>
-                <div class="sender">
-                    <p>Fine, What About you?</p>
-                </div>
-            </div>
+            <!-- users chats -->
+            <div class="messages" id="my-chats"></div>
         </div>
         <form action="" id="chat-sender" method="POST">
             <div class="sending-area">
