@@ -6,8 +6,9 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+@login_required(login_url='signin_url')
 def home(request):
     users = User.objects.all()
     context = {

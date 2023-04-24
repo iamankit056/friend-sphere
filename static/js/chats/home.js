@@ -35,6 +35,11 @@ function LoadChats(receiver_id)
 function ChatRowHtml(chat, className='sender') {
     return (
         '<div class="' + className + '">' +
-            '<p>' + chat.text + '</p>' +
+            '<pre>' + chat.text + '</pre>' +
+            '<button>' + 
+                '<a href="user/chat/' + chat.pk + '/delete"'> +
+                    '<i class="fa fa-trash" aria-hidden="true"></i>' + 
+                '</a>' +
+            '</button>' +
         '</div>')
 }

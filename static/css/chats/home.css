@@ -191,7 +191,7 @@ section {
     font-family: sans-serif;
 }
 
-.reciver {
+.receiver {
     width: auto;
     padding: 13px;
     margin: 24px;
@@ -203,7 +203,7 @@ section {
     background-color: #ae00ff;
 }
 
-.reciver button {
+.receiver button {
     margin: auto 10px;
     background-color: rgb(255, 255, 255, 0);
     border: 0;

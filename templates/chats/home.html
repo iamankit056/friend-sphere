@@ -33,11 +33,14 @@
             </a>
         </div>
         <div class="menu">
-            <a href="">
+            <!-- user profile -->
+            <a href="{% url 'user_profile_url' user.username %}">
                 <img src="{{ user.profile.profile_pic.url }}" class="profile-picture">
             </a>
             <button>
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                <a href="{% url 'signout_url' %}">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                </a>
             </button>
         </div>
     </nav>
@@ -47,17 +50,21 @@
                 <input type="text" name="" id="" placeholder="Search">
                 <button><i class="fa fa-search" style="font-size: 18px;"></i></button>
             </div>
-            {% comment %} {% for user_profile in users_profile %} {% endcomment %}
-            <div class="user">
-                <div class="user-pic">
-                    <img src="{{ user_profile.profile_pic.url }}" class="profile-picture">
+            {% for u in users %}
+                {% if u.pk != user.pk %}
+                <div class="user" onclick="ActivateChattingForReceiver({{u.profile.pk}})">
+                    <div class="user-pic">
+                        <a href="{% url 'user_profile_url' u.username %}">
+                            <img src="{{ u.profile.profile_pic.url }}" class="profile-picture">
+                        </a>
+                    </div>
+                    <div class="about-user">
+                        <h3>{{ u.profile.user.username }}</h3>
+                        <p>{{ u.profile.bio }}</p>
+                    </div>
                 </div>
-                <div class="about-user">
-                    <h3>{{ user_profile.user.username }}</h3>
-                    <p>{{ user_profile.bio }}</p>
-                </div>
-            </div>
-            {% comment %} {% endfor %} {% endcomment %}
+                {% endif %}
+            {% endfor %}
         </div>
         <div id="chats">
             <div class="chats-action-control">
@@ -67,16 +74,8 @@
                 <p>{{user.username}}</p>
                 </label>
             </div>
-            <div class="messages">
-                <div class="reciver">
-                    <pre>Hi, How are you?</pre>
-                    <button><i class="fa fa-trash" aria-hidden="true"></i></button>
-                </div>
-                <div class="sender">
-                    <pre>Fine, What About you?</pre>
-                    <button><i class="fa fa-trash" aria-hidden="true"></i></button>
-                </div>
-            </div>
+            <!-- my chats -->
+            <div class="messages" id='my-chats'></div>
         </div>
         <form action="" id="chat-sender" method="POST">
             <div class="sending-area">
