@@ -32,6 +32,8 @@ function LoadChats(receiver_id)
     })
 }
 
+LoadChats(2)
+
 function ChatRowHtml(chat, className='sender') {
     return (
         '<div class="' + className + '">' +
