@@ -29,10 +29,8 @@ def get_chats(request, receiver_id):
 
 
 @api_view(['POST'])
-def save_chat(request, receiver_id):
+def save_chat(request):
     if request.method == 'POST':
-        request.data['msg_sender'] = request.user.id
-        request.data['msg_receiver'] = receiver_id
         serialize_chat = ChatMessageSerialzer(data=request.data)
         if serialize_chat.is_valid():
             serialize_chat.save()

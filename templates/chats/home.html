@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +20,6 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    {% csrf_token %}
     <nav id="my-nav">
         <div class="logo">
             <a href="/">
@@ -65,28 +63,29 @@
         <div id="chats">
             <div class="chats-action-control">
                 <a href="">
-                    <img src="{{user.profile.profile_pic.url}}" class="profile-picture">
+                    <img id="receiver_profile_pic" class="profile-picture">
                 </a>
-                <p>{{user.username}}</p>
+                <p id="receiver_username"></p>
                 </label>
             </div>
             <!-- my chats -->
-            <div class="messages" id='my-chats'></div>
+            <div class="messages" id="my-chats"></div>
         </div>
-        <form action="" id="chat-sender" method="POST">
+        <div id="sending-area">
             <div class="sending-area">
-                <div class="add-files">
-
-                </div>
+                <div class="add-files"></div>
                 <div class="message">
-                    <input type="text" name="" id="" placeholder="Message">
-                    <input type="file" name="" id="attachment" hidden />
+                    <input type="text" name="msg_sender" id="msg_sender" value="{{user.profile.id}}" hidden >
+                    <input type="text" name="msg_receiver" id="msg_receiver" hidden >
+                    <input type="text" name="text" id="text" placeholder="Message">
+                    <input type="file" name="file" id="attachment" hidden />
                     <label for="attachment">
                             <i class="fa fa-paperclip" aria-hidden="true"></i>
                     </label>
-                    <button><i class="fa fa-paper-plane-o" aria-hidden="true" style="font-size: 28px;"></i></button>
+                    <button id="message_send_btn"><i class="fa fa-paper-plane-o" aria-hidden="true" style="font-size: 28px;"></i></button>
                 </div>
-        </form>
+            </div>
+        </div>
     </section>
 
     <!-- my script -->

@@ -69,7 +69,7 @@ section {
     border-radius: 8px;
 }
 
-#chat-sender {
+#sending-area {
     margin: 0px 0.5%;
     float: left;
     width: 66%;
