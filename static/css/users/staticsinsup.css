@@ -19,6 +19,11 @@
       text-decoration: inherit;
     }
     
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
     hr {
       position: relative;
       margin-top: 27%;
