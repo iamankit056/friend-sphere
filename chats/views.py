@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from chats.models import ChatMessage
+from chats.forms import MessageSubmitionForm
 from django.contrib.auth.models import User
 from chats.serializers import ChatMessageSerialzer
 from rest_framework import status
@@ -16,7 +17,7 @@ def home(request):
     }
     return render(request, 'chats/home.html', context)
 
-
+    
 @api_view(['GET'])
 def get_chats(request, receiver_id):
     if request.method == 'GET':
@@ -28,21 +29,20 @@ def get_chats(request, receiver_id):
     return Response({'error': 'something went wrong, failed to fetch data!'}, status=status.HTTP_408_REQUEST_TIMEOUT)
 
 
-@api_view(['POST'])
 def save_chat(request):
     if request.method == 'POST':
-        serialize_chat = ChatMessageSerialzer(data=request.data)
-        if serialize_chat.is_valid():
-            serialize_chat.save()
-            return Response(status=status.HTTP_201_CREATED)
+        message_submition_form = MessageSubmitionForm(request.POST)
+        if message_submition_form.is_valid():
+            message_submition_form.save()
+            return redirect('home_url')
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['DELETE'])
 def delete_chat(request, chat_id):
     try:
         chat = ChatMessage.objects.get(pk=chat_id)
         chat.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
     except:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+        pass
+    
+    return redirect('home_url')
