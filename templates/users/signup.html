@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/users/staticsinsup.css' %}">
 </head>
 <body>
-  <form action="/signup" method="POST">
+  <form action="{% url 'signup_url' %}" method="POST">
     {% csrf_token %}
     <div class="content">
       <div class="container">

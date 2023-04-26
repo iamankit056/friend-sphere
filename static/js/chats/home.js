@@ -3,22 +3,23 @@ const time_for_makeing_chat_request = 2000
 
 function SendMessage() {
         console.log('send btn clicked...')
-        msg_sender = $('#msg_sender').val();
-        msg_receiver = $('#msg_receiver').val();
-        text = $('#text').val()
 
-        if(!msg_sender || !msg_receiver) {
+        if(!$('#msg_sender').val() || !$('#msg_receiver').val()) {
             alert('sender or receiver missing...');
-            return;
+            return false;
         }
 
-        if(!text) {
+        if(!$('#text').val()) {
             alert('please type any text before send');
+            return false;
         }
+
+        console.log($('#sending-area').serialize())
 
         $.ajax({
-            type: 'get',
-            url: 'http://localhost:9000/receiver/' + msg_receiver + '/chat/send?text=' + text,
+            type: 'post',
+            url: 'http://localhost:9000/user/chat/send',
+            data: $('#sending-area').serialize(),
             success: function() {
                 console.log('message send...');
             }

@@ -71,7 +71,7 @@
             <!-- my chats -->
             <div class="messages" id="my-chats"></div>
         </div>
-        <form action="{% url 'send_chat_url' %}" method="post" enctype="multipart/form-data" id="sending-area">
+        <form method="post" onsubmit="return(SendMessage())" enctype="multipart/form-data" id="sending-area">
             <div class="sending-area">
                 <div class="add-files"></div>
                 <div class="message">
