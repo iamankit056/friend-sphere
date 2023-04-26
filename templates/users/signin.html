@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="{% static 'css/users/staticsinsup.css' %}" />
 </head>
 <body>
-    <form action="" method="POST">
+    <form action="/singnin" method="POST">
       {% csrf_token %}
       <div class="content">
         <div class="container">
+                  <h2> SIGNIN </h2>
           <img class="bg-img" src="{% static 'images/bg.jpg' %}" />
           <div class="connexion">
             <div class="contact-form">
