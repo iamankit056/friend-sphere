@@ -1,9 +1,8 @@
 let active_user
+let active_receiver_id = -1
 const time_for_makeing_chat_request = 2000
 
 function SendMessage() {
-        console.log('send btn clicked...')
-
         if(!$('#msg_sender').val() || !$('#msg_receiver').val()) {
             alert('sender or receiver missing...');
             return false;
@@ -13,8 +12,6 @@ function SendMessage() {
             alert('please type any text before send');
             return false;
         }
-
-        console.log($('#sending-area').serialize())
 
         $.ajax({
             type: 'post',
@@ -29,6 +26,12 @@ function SendMessage() {
 }
 
 function ActivateChattingForReceiver(receiver_id) {
+    if(active_receiver_id == receiver_id)
+        return;
+    
+    // change active receiver
+    active_receiver_id = receiver_id;
+
     if (!active_user)
         clearInterval(active_user)
 
@@ -38,6 +41,12 @@ function ActivateChattingForReceiver(receiver_id) {
 
     // change receiver
     document.getElementById('msg_receiver').value = receiver_id;
+
+    user_profile_pic = $('#profile_pic_' + receiver_id).clone()
+    username = $('#username_' + receiver_id).clone()
+
+    $('#active_reciver').html(user_profile_pic)
+    $('#active_reciver').append(username)
 }
 
 function LoadMessages(receiver_id) {

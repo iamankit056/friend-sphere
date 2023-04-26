@@ -89,3 +89,14 @@ def update_profile(request):
             messages.error(request, f'{request.user.username} profile updation failed...')
 
     return redirect('user_profile_url', username=request.user.username)
+
+@login_required(login_url='signin_url')
+def delete_user(request, username):
+    try:
+        user = User.objects.get(username=username)
+        user.delete()
+    except:
+        messages.info(request, f'{username} does not exist')
+        return render(request, 'errors/404.html', status=status.HTTP_404_NOT_FOUND)
+    
+    return redirect('signin_url')

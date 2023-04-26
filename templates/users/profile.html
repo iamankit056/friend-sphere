@@ -44,6 +44,7 @@
                 </div>
                 <div class="col-12 mb-3">
                     <button type="submit" class="btn btn-primary">save changes</button>
+                    <a  href="{% url 'delete_user_url' user.username %}" class="mx-2 btn btn-danger">Delete Profile</a>
                 </div>
             {% endif %}
         </form>

@@ -48,12 +48,12 @@
                 {% if u.pk != user.pk %}
                 <div class="user" onclick="ActivateChattingForReceiver({{u.profile.pk}})">
                     <div class="user-pic">
-                        <a href="{% url 'user_profile_url' u.username %}">
+                        <a id="profile_pic_{{u.profile.pk}}" href="{% url 'user_profile_url' u.username %}">
                             <img src="{{ u.profile.profile_pic.url }}" class="profile-picture">
                         </a>
                     </div>
                     <div class="about-user">
-                        <h3>{{ u.profile.user.username }}</h3>
+                        <h3 id="username_{{u.profile.pk}}" >{{ u.profile.user.username }}</h3>
                         <p>{{ u.profile.bio }}</p>
                     </div>
                 </div>
@@ -61,13 +61,8 @@
             {% endfor %}
         </div>
         <div id="chats">
-            <div class="chats-action-control">
-                <a href="">
-                    <img id="receiver_profile_pic" class="profile-picture">
-                </a>
-                <p id="receiver_username"></p>
-                </label>
-            </div>
+            <div class="chats-action-control" id="active_reciver"></div>
+
             <!-- my chats -->
             <div class="messages" id="my-chats"></div>
         </div>
