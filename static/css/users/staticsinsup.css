@@ -20,8 +20,12 @@
     }
     
     h2 {
-      font-size: 20px;
-      font-weight: 600;
+      position: relative;
+      font-size: 40px;
+      font-weight: 500;
+      margin: 2px;
+      margin-top: 15px;
+      align-items: center;
     }
     
     hr {
@@ -39,7 +43,7 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 900px;
+      height: 620px;
       background: #b13ee7bd;
       background-image: linear-gradient(226deg, black, transparent);
       z-index:-1;
@@ -48,15 +52,17 @@
     .container {
       display: block;
       position: relative;
-      width: 530px;
-      height: 679px;
+      width: 500px;
+      height: 559px;
       margin: auto;
-      margin-top: 180px; 
+      margin-top: 30px; 
       box-shadow: 1px 5px 10px 1px #333;
       overflow:hidden;
     }
     
     img.bg-img {
+      width: 100%;
+      height: 550px;
       display: block;
       position: absolute;
       margin: auto;
@@ -128,12 +134,12 @@
         opacity: 1;
         background-color: #1161EE;
         cursor: pointer;
-        margin-top: 70px;
+        margin-top: 40px;
         margin-bottom: 40px;
     }
     .enregistrer {
       position: absolute;
-      padding: 15% 13%;
+      padding: 5% 13%;
       width: 74%;
       right:0px;
       transition: all 0.7s;
