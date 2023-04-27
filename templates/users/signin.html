@@ -13,20 +13,21 @@
       {% csrf_token %}
       <div class="content">
         <div class="container">
-                  <h2> SIGNIN </h2>
           <img class="bg-img" src="{% static 'images/bg.jpg' %}" />
           <div class="connexion">
             <div class="contact-form">
+              <h2> Login </h2>
               <label>USERNAME</label>
               <input placeholder="" type="text" name="username" required />
               <br>
               <label>PASSWORD</label>
               <input placeholder="" type="password" name="password" required />
-              <input class="submit" value="SIGN IN" type="submit" />
+              <br><br>
+              <button class="submit" type="submit"> Sign in</button>
             </div>
-
-            <a href=""><h4>Forgot password?</h4></a>
-            <a href="{% url 'signup_url' %}"><h4> SIGNUP</h4></a>
+            <small>Create Account? 
+              <a href="{% url 'signup_url' %}" style="color:rgb(2, 112, 255);text-decoration: underline;font-size: 16px;">Sign Up</a>
+            </small>
           </div>
         </div>
       </div>

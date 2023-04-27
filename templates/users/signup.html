@@ -17,6 +17,8 @@
           <div class="menu">
         <div class="enregistrer active-section">
           <div class="contact-form">
+            <h2>Join Now</h2>
+            <hr><br>
             <label>USERNAME</label>
             <input placeholder="" type="text" name="username" required />
 
@@ -31,7 +33,10 @@
 
             <br>
 
-            <input class="submit" value="SIGN UP" type="submit" />
+            <button class="submit" type="submit">Sign Up </button>
+            <small>Already have an Account? 
+              <a href="{% url 'signin_url' %}" style="color:rgb(2, 112, 255);text-decoration: underline;font-size: 16px;">Login</a>
+            </small>
           </div>
       </div>
     </div>
