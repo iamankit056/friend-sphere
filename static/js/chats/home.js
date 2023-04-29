@@ -19,6 +19,7 @@ function SendMessage() {
             data: $('#sending-area').serialize(),
             success: function() {
                 console.log('message send...');
+                $('#text').val('')
             }
         })
 

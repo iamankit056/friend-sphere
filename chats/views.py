@@ -31,7 +31,7 @@ def get_chats(request, receiver_id):
 
 def save_chat(request):
     if request.method == 'POST':
-        message_submition_form = MessageSubmitionForm(request.POST, request.FILES)
+        message_submition_form = MessageSubmitionForm(request.POST)
         if message_submition_form.is_valid():
             message_submition_form.save()
             return redirect('home_url')
