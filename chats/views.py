@@ -23,7 +23,7 @@ def get_chats(request, receiver_id):
     if request.method == 'GET':
         chats = ChatMessage.objects.filter(
             Q(msg_sender=request.user.id) & Q(msg_receiver=receiver_id) |
-            Q(msg_sender=receiver_id) & Q(msg_receiver=request.user.id))
+            Q(msg_sender=receiver_id) & Q(msg_receiver=request.user.id)).order_by('-sended_on')
         serialize_chats = ChatMessageSerialzer(chats, many=True)
         return Response(serialize_chats.data, status=status.HTTP_200_OK)
     return Response({'error': 'something went wrong, failed to fetch data!'}, status=status.HTTP_408_REQUEST_TIMEOUT)

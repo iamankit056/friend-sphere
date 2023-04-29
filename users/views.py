@@ -77,7 +77,6 @@ def user_profile(request, username):
 def update_profile(request):
     if request.method == 'POST':
         user_updation_form = UserUpdationForm(request.POST, instance=request.user)
-        request.user.profile.profile_pic.delete(False)
         profile_updation_form = ProfileUpdationForm(request.POST, request.FILES, instance=request.user.profile)
 
         if user_updation_form.is_valid() and profile_updation_form.is_valid():
